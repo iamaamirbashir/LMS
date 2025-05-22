@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Dashboard</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      .container {
+        max-width: 1200px;
+      }
+      .mt-4 {
+        margin-top: 40px;
+      }
+      .mb-4 {
+        margin-bottom: 20px;
+      }
+      .card-body {
+        background-color: #f8f9fa;
+        border-radius: 8px;
+      }
+      .quote-section {
+        background-color: #e9f7fd;
+        border-radius: 8px;
+        padding: 20px;
+        margin-bottom: 30px;
+      }
+      .quote-section h4 {
+        font-weight: bold;
+      }
+      .quote {
+        font-style: italic;
+        color: #555;
+      }
+      .motivational-text {
+        margin-top: 30px;
+        font-size: 1.1rem;
+        text-align: center;
+        color: #333;
+      }
+      .info-section {
+        padding: 20px;
+        background-color: #f8f9fa;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+      /* Buttons section */
+      .button-section {
+        text-align: center;
+        margin-top: 40px;
+      }
+      .view-btn,
+      .borrowed-btn {
+        font-size: 1.2rem;
+        padding: 15px 30px;
+        margin: 10px;
+        width: 200px;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+      }
+      .view-btn {
+        background-color: #28a745;
+        color: white;
+      }
+      .borrowed-btn {
+        background-color: #007bff;
+        color: white;
+      }
+      .view-btn:hover,
+      .borrowed-btn:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">JNU Library</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          class="collapse navbar-collapse d-flex justify-content-end"
+          id="navbarNav"
+        >
+          <a href="/" class="btn btn-primary">Home</a>
+          <a href="{{ url_for('user_books') }}" class="btn btn-primary ms-3">
+            View All Books
+          </a>
+          <a
+            href="{{ url_for('my_borrowed_books') }}"
+            class="btn btn-primary ms-4"
+          >
+            View My Borrowed Books
+          </a>
+
+          <a href="/logout" class="btn btn-danger ms-3">Logout</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mt-4">
+      <h3 class="mb-4 text-center">Welcome, {{ session['username'] }}</h3>
+
+      <!-- Motivational Quote Section -->
+      <div class="quote-section">
+        <h4 class="mb-3">Inspirational Quote of the Day</h4>
+        <p class="quote">
+          "The beautiful thing about learning is that no one can take it away
+          from you." - B.B. King
+        </p>
+      </div>
+
+      <!-- Information Section -->
+      <div class="info-section mb-5">
+        <h4>Explore and Learn</h4>
+        <p>
+          As a student, your journey is about more than just academics. It's
+          about exploring the world of knowledge and finding new ways to grow.
+          Whether you're borrowing books for research or just exploring for
+          leisure, every step you take in this learning process builds a
+          stronger foundation for your future.
+        </p>
+        <p>
+          The library is your gateway to endless possibilities, and the books
+          within its walls are your keys to understanding the world around you.
+        </p>
+      </div>
+
+      <!-- Motivational Text -->
+      <div class="motivational-text">
+        <p>
+          Keep pushing the boundaries of your knowledge and never stop learning.
+          Remember, success isn't final, failure isn't fatal: it's the courage
+          to continue that counts.
+        </p>
+        <p>
+          <strong
+            >Stay curious. Stay motivated. And always strive to be better than
+            yesterday.</strong
+          >
+        </p>
+      </div>
+
+      <!-- Buttons Section for "View Books" and "View Borrowed Books" -->
+      <div class="button-section">
+        <a href="{{ url_for('user_books') }}" class="btn view-btn">
+          View All Books
+        </a>
+        <a href="{{ url_for('my_borrowed_books') }}" class="btn borrowed-btn">
+          View My Borrowed Books
+        </a>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
